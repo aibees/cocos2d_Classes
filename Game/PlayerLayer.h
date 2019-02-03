@@ -7,6 +7,7 @@
 #include "Game/Unit/Player.h"
 #include "Game/backgroundLayer.h"
 #include "Game/BG/Background.h"
+#include "Game/playerCamera.h"
 
 class PlayerLayer : public cocos2d::Layer {
 private:

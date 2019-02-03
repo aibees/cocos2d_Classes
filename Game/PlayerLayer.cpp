@@ -8,6 +8,8 @@
 
 USING_NS_CC;
 
+Vec2 position;
+
 Layer* PlayerLayer::createLayer() {
 	Layer* playerLayer = PlayerLayer::create();
 	CCLOG("PlayerLayer Create");
@@ -43,7 +45,8 @@ bool PlayerLayer::init() {
 	_eventDispatcher->addEventListenerWithFixedPriority(buttonListener, 1);
 	//---------------------
 
-	//this->scheduleUpdate();
+	this->scheduleUpdate();
+
 	return true;
 }
 
@@ -51,19 +54,15 @@ bool PlayerLayer::init() {
 	//각 class에서 sprite 불러옴
 	auto spritePlayer = player->getSprite();
 	auto spriteBG = Background::getInstance()->getBG_Sprite();
-
-	//sprite에 대한 Rect Bound 설정
-	Rect Player_bound = spritePlayer->boundingBox();
-	Rect BG_bound = spriteBG->boundingBox();
 	
 	//새로운 동작 위해 현재 동작 제거
-	if (spriteBG->getActionByTag(PLAYER_MOVE_ACTION)) {
-		spriteBG->stopActionByTag(PLAYER_MOVE_ACTION);
+	if (spritePlayer->getActionByTag(PLAYER_MOVE_ACTION)) {
+		spritePlayer->stopActionByTag(PLAYER_MOVE_ACTION);
 	}
 
 	log("X : %f || Y : %f", Position.x, Position.y); // 이동 위해 새로 찍은 좌표
 	CCSize visible = Director::getInstance()->getVisibleSize();
-	Vec2 tmp = Vec2((-1)*(Position.x - visible.width / 2), (-1)*(Position.y - visible.height / 2));
+	//Vec2 tmp = Vec2((Position.x - visible.width / 2), (Position.y - visible.height / 2));
 	float distance = sqrt((Position.x - visible.width / 2)*(Position.x - visible.width / 2) + (Position.y - visible.height / 2)*(Position.y - visible.height / 2));
 
 	//auto moveAction = MoveBy::create(distance / player->getMoveSpeed(), tmp);
@@ -72,13 +71,11 @@ bool PlayerLayer::init() {
 	moveAction->setTag(PLAYER_MOVE_ACTION);
 	spritePlayer->runAction(moveAction);
 	spritePlayer->setRotation(player->calc_rotate(Position));
-	Camera::getDefaultCamera()->setPosition(Position);
 	return;
 }
 
 bool PlayerLayer::TouchBegan(Touch* touch, Event* event) {
-	Vec2 TouchLocation = touch->getLocation();
-	movePlayer(TouchLocation);
+	movePlayer(touch->getLocation());
 	return true;
 }
 
@@ -90,6 +87,5 @@ void PlayerLayer::player_callback(EventCustom* event) {
 }
 
 void PlayerLayer::update(float delta) {
-	Camera::getDefaultCamera()->setPosition(player->getPosition());
-	Camera::getDefaultCamera()->update(delta);
+
 }
