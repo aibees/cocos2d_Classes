@@ -2,6 +2,8 @@
 #include "cocos-ext.h"
 
 #define ATTACK_BUTTON 1
+#define LEFT_BUTTON 2
+#define RIGHT_BUTTON 3
 
 USING_NS_CC;
 
@@ -14,11 +16,24 @@ Layer* ButtonLayer::createLayer() {
 void ButtonLayer::createButton() {
 	auto Visible = Director::getInstance()->getVisibleSize();
 
+	//------attack button------
 	attackButton = ui::Button::create();
 	//attackButton->setTouchEnabled(true);
 	attackButton->loadTextures("button/button_attack.png", "button/button_attack_pressed.png", "");
 	attackButton->setPosition(Vec2(Visible.width - 80, 160));
 	this->addChild(attackButton, 1, ATTACK_BUTTON);
+
+	//------camera test button------
+	cameraLeftButton = ui::Button::create();
+	cameraLeftButton->loadTextures("button/left_arrow.png", "button/left_arrow.png", "");
+	cameraLeftButton->setPosition(Vec2(290, 160));
+	this->addChild(cameraLeftButton, 1, LEFT_BUTTON);
+	
+	cameraRightButton = ui::Button::create();
+	cameraRightButton->loadTextures("button/right_arrow.png", "button/right_arrow.png", "");
+	cameraRightButton->setPosition(Vec2(80, 160));
+	this->addChild(cameraRightButton, 1, RIGHT_BUTTON);
+
 	log("add button");
 	return;
 }
@@ -33,13 +48,50 @@ void ButtonLayer::OnattackTouch(Ref* pSender, ui::Widget::TouchEventType type) {
 	{
 	case cocos2d::ui::Widget::TouchEventType::BEGAN:
 		attackButtonBegan();
-		log("attack button touched!");
 		break;
 	case cocos2d::ui::Widget::TouchEventType::MOVED:
-		log("attack button moved");
 		break;
 	case cocos2d::ui::Widget::TouchEventType::ENDED:
-		log("attack button released");
+		break;
+	default:
+		break;
+	}
+}
+
+void ButtonLayer::LeftTouchBegan() {
+	EventCustom clickEvent("LeftToCamera");
+	_eventDispatcher->dispatchEvent(&clickEvent);
+}
+
+void ButtonLayer::LeftTouch(Ref* pSender, ui::Widget::TouchEventType type) {
+	switch (type)
+	{
+	case cocos2d::ui::Widget::TouchEventType::BEGAN:
+		LeftTouchBegan();
+		break;
+	case cocos2d::ui::Widget::TouchEventType::MOVED:
+		break;
+	case cocos2d::ui::Widget::TouchEventType::ENDED:
+		break;
+	default:
+		break;
+	}
+}
+
+void ButtonLayer::RightTouchBegan() {
+	EventCustom clickEvent("RightToCamera");
+	_eventDispatcher->dispatchEvent(&clickEvent);
+}
+
+void ButtonLayer::RightTouch(Ref* pSender, ui::Widget::TouchEventType type) {
+	switch (type)
+	{
+	case cocos2d::ui::Widget::TouchEventType::BEGAN:
+		RightTouchBegan();
+		break;
+	case cocos2d::ui::Widget::TouchEventType::MOVED:
+		break;
+	case cocos2d::ui::Widget::TouchEventType::ENDED:
 		break;
 	default:
 		break;
@@ -56,6 +108,8 @@ bool ButtonLayer::init() {
 	buttonListener->setSwallowTouches(true);
 	createButton();
 	attackButton->addTouchEventListener(CC_CALLBACK_2(ButtonLayer::OnattackTouch, this));
-	
+	cameraLeftButton->addTouchEventListener(CC_CALLBACK_2(ButtonLayer::LeftTouch, this));
+	cameraRightButton->addTouchEventListener(CC_CALLBACK_2(ButtonLayer::RightTouch, this));
+
 	return true;
 }

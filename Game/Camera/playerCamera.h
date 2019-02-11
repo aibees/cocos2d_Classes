@@ -5,14 +5,11 @@
 
 class playerCamera : public cocos2d::Camera{
 private:
-	static playerCamera* Instance;
 	cocos2d::Camera* cam;
 	cocos2d::Vec2 position;
 	int depth;
-	playerCamera();
 public:
-	
-	static playerCamera* getInstance();
+	playerCamera();
 
 	cocos2d::Camera* getCamera();
 	void setCamera();

@@ -2,23 +2,15 @@
 
 USING_NS_CC;
 
-playerCamera* playerCamera::Instance = NULL;
-
-playerCamera* playerCamera::getInstance() {
-	if (!Instance) {
-		Instance = new playerCamera();
-	}
-	return Instance;
-}
-
 playerCamera::playerCamera() {
 	setCamera();
 }
 
-Camera* playerCamera::getCamera() {return cam;}
+Camera* playerCamera::getCamera() {return cam;} 
 
 void playerCamera::setCamera() {
-	cam = Camera::getDefaultCamera();
+	auto size = Director::getInstance()->getWinSize();
+	cam = Camera::createOrthographic(size.width, size.height, 1, getDepth());
 }
 
 cocos2d::Vec2 playerCamera::getPosition() { return position; }

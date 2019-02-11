@@ -22,7 +22,7 @@ bool PlayerLayer::init() {
 	}
 	auto Visible = Director::getInstance()->getVisibleSize();
 	
-	//---------------- Player 持失 貢 Listener 持失 ------------------------------
+	//---------------- Player 持失  ------------------------------
 	player = new Player(Vec2(Visible.width / 2, Visible.height / 2), 100, 100, 100);
 	
 	CCSprite* spritePlayer = player->getSprite();
@@ -71,6 +71,7 @@ bool PlayerLayer::init() {
 	moveAction->setTag(PLAYER_MOVE_ACTION);
 	spritePlayer->runAction(moveAction);
 	spritePlayer->setRotation(player->calc_rotate(Position));
+	log("layer position : %f || %f", this->getPosition().x, this->getPosition().y);
 	return;
 }
 
@@ -80,6 +81,7 @@ bool PlayerLayer::TouchBegan(Touch* touch, Event* event) {
 }
 
 void PlayerLayer::player_callback(EventCustom* event) {
+	log("speed up");
 	float tmp = player->getMoveSpeed();
 	if(tmp > 0.5)
 		player->SpeedUp();

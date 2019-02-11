@@ -6,13 +6,18 @@
 
 class CameraLayer : cocos2d::Layer {
 private :
-
+	cocos2d::Camera* cam;
+	cocos2d::Vec3 camPosition;
 public :
 	static cocos2d::Layer* createLayer();
 
 	virtual bool init();
 
-	CREATE_FUNC(PlayerLayer);
+	void Right(cocos2d::EventCustom* event);
+
+	void Left(cocos2d::EventCustom* event);
+
+	CREATE_FUNC(CameraLayer);
 
 };
 #endif // !__CAMERA_LAYER_H__
