@@ -5,13 +5,13 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "ui/CocosGUI.h"
 
 class ButtonLayer : public cocos2d::Layer {
 private:
 	cocos2d::ui::Button* attackButton;
 	cocos2d::ui::Button* cameraLeftButton;
 	cocos2d::ui::Button* cameraRightButton;
-
 public:
 	static cocos2d::Layer* createLayer();
 

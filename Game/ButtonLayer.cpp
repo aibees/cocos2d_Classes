@@ -1,5 +1,4 @@
 #include "ButtonLayer.h"
-#include "cocos-ext.h"
 
 #define ATTACK_BUTTON 1
 #define LEFT_BUTTON 2
