@@ -82,6 +82,8 @@ void PlayerLayer::player_callback(EventCustom* event) {
 void PlayerLayer::update(float delta) {
 	// playerSprite load with tag value
 	auto playerSprite = static_cast<CCSprite*>(getChildByTag(PLAYER));
+	auto win = Director::getInstance()->getWinSize();
+	auto bounding = getChildByTag(PLAYER)->getBoundingBox();
 	Vec2 move, d;
 	if (isMoving) {
 
@@ -95,7 +97,16 @@ void PlayerLayer::update(float delta) {
 		d = Vec2(normalVector.x * delta * player->getMoveSpeed(), normalVector.y * delta * player->getMoveSpeed());
 		
 		// move : player sprite will move by distance vector at a frame
-		move = Vec2(player->getPosition().x + (d.x), player->getPosition().y + (d.y));
+			// calc move vector x & y
+		float moveX = player->getPosition().x + (d.x), moveY = player->getPosition().y + (d.y);
+
+			// Window size Bounding
+		if (bounding.getMaxX() >= 1440) { moveX = 1440 - (bounding.getMaxX() - bounding.getMinX())/2; }
+		if (bounding.getMaxY() >= 720) { moveY = 720 - (bounding.getMaxY() - bounding.getMinY())/2; }
+		if (bounding.getMinX() <= 0) { moveX = 0 + (bounding.getMaxX() - bounding.getMinX()) / 2; }
+		if (bounding.getMinY() <= 0) { moveY = 0 + (bounding.getMaxX() - bounding.getMinX()) / 2; }
+			// set move Vector
+		move = Vec2(moveX, moveY);
 
 		// after updates player object's position, will updates sprite position
 		player->setPosition(move);
