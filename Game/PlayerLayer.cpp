@@ -111,6 +111,8 @@ void PlayerLayer::update(float delta) {
 		// after updates player object's position, will updates sprite position
 		player->setPosition(move);
 		playerSprite->setPosition(player->getPosition());
+			// send player's Rect data to CollisionData class for calculating collision
+		CollisionData::getInstance()->setPlayerBox(playerSprite->getBoundingBox());
 
 		// check moving
 		if (abs(newPosition.x - player->getPosition().x) < abs(d.x) && abs(newPosition.y - player->getPosition().y) < abs(d.y)) {

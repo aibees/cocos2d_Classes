@@ -8,6 +8,7 @@
 #include "Game/backgroundLayer.h"
 #include "Game/BG/Background.h"
 #include "Game/ButtonLayer.h"
+#include "Game/CollisionData.h"
 
 class PlayerLayer : public cocos2d::Layer {
 private:
