@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "Game/CollisionData.h"
+#include "Game/Item/ItemSet.h"
 #include <ctime>
 #include <vector>
 #include <string>
@@ -28,7 +29,7 @@ public :
 
 	virtual bool init();
 
-	void setSprite(std::string filename);
+	void setSprite(std::string filename, std::string name);
 
 	//schedul func
 	virtual void update(float delta);
