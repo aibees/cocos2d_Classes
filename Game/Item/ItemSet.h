@@ -7,21 +7,23 @@
 #ifndef __ITEMSET_H__
 #define __ITEMSET_H__
 
-#include <vector>
 #include "cocos2d.h"
 #include "Item.h"
-#include "IClear.h"
-#include "ICloaking.h"
+#include "ItemFactory.h"
+#include <vector>
+#include <string>
 
 class ItemSet {
 private :
 	static ItemSet* Instance;
-	std::vector<Item*> itemQueue;
+	std::vector<Item*> ItemQueue;
 	ItemSet();
 public :
 	static ItemSet* getInstance();
 
+	// ItemQueue function
 	int getQueueSize();
-
+	bool isQueueFull();
+	void insertItem(std::string itemName);
 };
 #endif // !__ITEMSET_H__

@@ -13,9 +13,22 @@ ItemSet* ItemSet::getInstance() {
 }
 
 ItemSet::ItemSet() {
-	itemQueue.reserve(5);
+	ItemQueue.reserve(5);
 }
 
 int ItemSet::getQueueSize() {
-	return itemQueue.size();
+	return ItemQueue.size();
+}
+
+bool ItemSet::isQueueFull() {
+	if (ItemQueue.size() == ItemQueue.capacity())
+		return true;
+	else
+		return false;
+}
+
+void ItemSet::insertItem(string itemName) {
+	// how change string to item object...?
+	
+	ItemQueue.push_back(ItemFactory::getInstance()->createItem(itemName));
 }
