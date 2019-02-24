@@ -4,6 +4,10 @@
 #pragma once
 
 #include "cocos2d.h"
+#include "PlayerLayer.h"
+#include "ButtonLayer.h"
+#include "backgroundLayer.h"
+#include "ItemLayer.h"
 
 class GameScene : public cocos2d::Scene {
 private:
