@@ -24,17 +24,18 @@ private :
 	cocos2d::Rect playerBox;
 		// container for storing item sprite that exist at game scene
 	std::vector<cocos2d::CCSprite*> ItemSprite;
+	bool ItemCreateFlag;
 public :
 	static cocos2d::Layer* createLayer();
 
 	virtual bool init();
 
-	void setSprite(std::string filename, std::string name);
+	void setItemFrame();
 
 	//schedul func
 	virtual void update(float delta);
 	void createItem(float delta);
-
+	void setSprite(std::string filename, std::string name);
 	CREATE_FUNC(ItemLayer);
 };
 

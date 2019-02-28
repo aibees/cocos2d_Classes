@@ -11,10 +11,27 @@ Layer* ItemLayer::createLayer() {
 
 bool ItemLayer::init() {
 	if (!Layer::init()) { return false; }
-
+	setItemFrame();
 	this->scheduleUpdate();
 	this->schedule(schedule_selector(ItemLayer::createItem), 4.0f);
+	ItemCreateFlag = false;
 	return true;
+}
+
+void ItemLayer::setItemFrame() { //Frame sprite is tagged in 100's numbering
+	int num = ItemSet::getInstance()->getQueueCapacity();
+	auto visible = Director::getInstance()->getVisibleSize();
+	Sprite* ItemFrame[5] = {nullptr, };
+	for (int i = 0; i < num; i++) {
+		ItemFrame[i] = Sprite::create("Item/ItemFrame.png");
+		ItemFrame[i]->setAnchorPoint(Vec2(0, 1));
+		ItemFrame[i]->setScale(1.7f);
+		Rect box = ItemFrame[i]->getBoundingBox();
+		ItemFrame[i]->setPosition(Vec2(visible.width - (box.getMaxX() - box.getMinX()), visible.height - i*(box.getMaxY() - box.getMinY())));
+		ItemFrame[i]->setTag(100 + i);
+		this->addChild(ItemFrame[i], 1);
+	}
+	return;
 }
 
 void ItemLayer::update(float delta) {
@@ -27,12 +44,25 @@ void ItemLayer::update(float delta) {
 				// log("collision detected : %f || %f", (*it)->getPosition().x, (*it)->getPosition().y);
 			if (!ItemSet::getInstance()->isQueueFull()) {
 				ItemSet::getInstance()->insertItem((*it)->getName());
+				log("itemQueueSize : %d", ItemSet::getInstance()->getQueueSize());
 			}
 			auto sp = (*it);
 			ItemSprite.erase(it);
 			sp->removeFromParent();
 			break;
 		}
+	}
+	// Item Frame update
+
+
+	// schedule control
+	if(ItemSet::getInstance()->isQueueFull()) {
+		this->unschedule(schedule_selector(ItemLayer::createItem));
+		ItemCreateFlag = true;
+	}
+	if (!ItemSet::getInstance()->isQueueFull() && ItemCreateFlag) {
+		this->schedule(schedule_selector(ItemLayer::createItem), 4.0f);
+		ItemCreateFlag = false;
 	}
 }
 
@@ -59,8 +89,9 @@ void ItemLayer::createItem(float delta) {
 }
 
 void ItemLayer::setSprite(string filename, string name) {
+	srand(time(NULL));
 	CCSprite* itemSprite = CCSprite::create(filename);
-	Vec2 position = Vec2(rand() % 1480, rand() % 720);
+	Vec2 position = Vec2(rand()*rand() % 1480, rand()*rand() % 720);
 	itemSprite->setPosition(position);
 	itemSprite->setName(name);
 	this->addChild(itemSprite);
