@@ -4,11 +4,12 @@ USING_NS_CC;
 
 ICloaking::ICloaking() {
 	ICloaking(Vec2(ICloaking::getDefaultPosition()));
+	name = "ICloaking";
 }
 
 ICloaking::ICloaking(Vec2 position) {
 	ICloaking::Position = position;
-	name = "ICloaking";
+	
 }
 
 Vec2 ICloaking::getDefaultPosition() {
@@ -24,7 +25,7 @@ void ICloaking::setPosition(Vec2 position) {
 	Position = position;
 }
 
-String ICloaking::getItemName() {
+std::string ICloaking::getItemName() {
 	return name;
 }
 

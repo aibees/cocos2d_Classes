@@ -23,6 +23,6 @@ void Item::effect() {
 	log("effect");
 }
 
-String Item::getItemName() {
+std::string Item::getItemName() {
 	return name;
 }

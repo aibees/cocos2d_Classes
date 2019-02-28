@@ -9,6 +9,7 @@ IClear::IClear() {
 
 IClear::IClear(Vec2 position) {
 	IClear::Position = position;
+	
 }
 
 Vec2 IClear::getDefaultPosition() {
@@ -24,7 +25,7 @@ void IClear::setPosition(Vec2 position) {
 	Position = position;
 }
 
-String IClear::getItemName() {
+std::string IClear::getItemName() {
 	return name;
 }
 
