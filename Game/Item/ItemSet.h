@@ -23,7 +23,9 @@ public :
 
 	// ItemQueue function
 	int getQueueSize();
+	int getQueueCapacity();
 	bool isQueueFull();
 	void insertItem(std::string itemName);
+	Item* getItem(int index);
 };
 #endif // !__ITEMSET_H__
