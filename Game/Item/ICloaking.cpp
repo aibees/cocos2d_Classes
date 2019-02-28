@@ -8,6 +8,7 @@ ICloaking::ICloaking() {
 
 ICloaking::ICloaking(Vec2 position) {
 	ICloaking::Position = position;
+	name = "ICloaking";
 }
 
 Vec2 ICloaking::getDefaultPosition() {
@@ -21,6 +22,10 @@ Vec2 ICloaking::getPosition() {
 
 void ICloaking::setPosition(Vec2 position) {
 	Position = position;
+}
+
+String ICloaking::getItemName() {
+	return name;
 }
 
 void ICloaking::effect() {

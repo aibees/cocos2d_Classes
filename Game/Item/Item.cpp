@@ -3,7 +3,7 @@
 USING_NS_CC;
 
 Item::Item() {
-
+	name = "Item";
 }
 
 Item::Item(Vec2 position) {
@@ -21,4 +21,8 @@ void Item::setPosition(Vec2 position) {
 
 void Item::effect() {
 	log("effect");
+}
+
+String Item::getItemName() {
+	return name;
 }

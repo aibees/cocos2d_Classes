@@ -4,6 +4,7 @@ USING_NS_CC;
 
 IClear::IClear() {
 	IClear(Vec2(IClear::getDefaultPosition()));
+	name = "IClear";
 }
 
 IClear::IClear(Vec2 position) {
@@ -21,6 +22,10 @@ Vec2 IClear::getPosition() {
 
 void IClear::setPosition(Vec2 position) {
 	Position = position;
+}
+
+String IClear::getItemName() {
+	return name;
 }
 
 void IClear::effect() {
