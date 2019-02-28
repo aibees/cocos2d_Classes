@@ -53,8 +53,25 @@ void ItemLayer::update(float delta) {
 		}
 	}
 	// Item Frame update
-
-
+	int num = ItemSet::getInstance()->getQueueSize();
+	for(int i = 0; i < num; i++) {
+		if (ItemSet::getInstance()->getItem(i) == nullptr)
+			break;
+		CCSprite* frame = static_cast<CCSprite*>(getChildByTag(100 + i));
+		string SpriteName = "Item/";
+		SpriteName.append(ItemSet::getInstance()->getItem(i)->getItemName());
+		SpriteName.append(".png");
+		CCSprite* item = CCSprite::create(SpriteName);
+		item->setAnchorPoint(Vec2(1, 1));
+		item->setPosition(Vec2((frame->getBoundingBox().getMaxX() - frame->getBoundingBox().getMinX()) / 2, (frame->getBoundingBox().getMaxY() - frame->getBoundingBox().getMinY()) / 2));
+		frame->addChild(item);
+		/*
+			TODO1 : Alignment between item & frame
+			TODO2 : sprite remove process when player use item
+		*/
+	}
+	
+		
 	// schedule control
 	if(ItemSet::getInstance()->isQueueFull()) {
 		this->unschedule(schedule_selector(ItemLayer::createItem));
