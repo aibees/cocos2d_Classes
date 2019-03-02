@@ -58,13 +58,12 @@ void ItemLayer::update(float delta) {
 		if (ItemSet::getInstance()->getItem(i) == nullptr)
 			break;
 		CCSprite* frame = static_cast<CCSprite*>(getChildByTag(100 + i));
-		string SpriteName = "Item/";
-		SpriteName.append(ItemSet::getInstance()->getItem(i)->getItemName());
-		SpriteName.append(".png");
+		string SpriteName = "Item/" + ItemSet::getInstance()->getItem(i)->getItemName() + ".png";
 		CCSprite* item = CCSprite::create(SpriteName);
-		item->setAnchorPoint(Vec2(1, 1));
-		item->setPosition(Vec2((frame->getBoundingBox().getMaxX() - frame->getBoundingBox().getMinX()) / 2, (frame->getBoundingBox().getMaxY() - frame->getBoundingBox().getMinY()) / 2));
-		frame->addChild(item);
+		item->setAnchorPoint(Vec2(0.5, 0.5));
+		
+		item->setPosition(Vec2(frame->getBoundingBox().getMidX(), frame->getBoundingBox().getMidY()));
+		this->addChild(item, 2);
 		/*
 			TODO1 : Alignment between item & frame
 			TODO2 : sprite remove process when player use item
