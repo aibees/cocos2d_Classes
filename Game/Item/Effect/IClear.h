@@ -1,7 +1,7 @@
 #ifndef __ICLEAR_H__
 #define __ICLEAR_H__
 
-#include "Item.h"
+#include "../Item.h"
 
 class IClear : public Item {
 private :

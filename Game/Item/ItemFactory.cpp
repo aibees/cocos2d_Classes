@@ -1,6 +1,6 @@
 #include "ItemFactory.h"
-#include "ICloaking.h"
-#include "IClear.h"
+#include "Effect/ICloaking.h"
+#include "Effect/IClear.h"
 
 USING_NS_CC;
 using namespace std;

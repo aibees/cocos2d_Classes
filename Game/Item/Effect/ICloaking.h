@@ -1,7 +1,7 @@
 #ifndef __ICLOAKING_H__
 #define __ICLOAKING_H__
 
-#include "Item.h"
+#include "../Item.h"
 
 class ICloaking : public Item {
 private:
