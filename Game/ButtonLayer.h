@@ -10,8 +10,7 @@
 class ButtonLayer : public cocos2d::Layer {
 private:
 	cocos2d::ui::Button* attackButton;
-	cocos2d::ui::Button* cameraLeftButton;
-	cocos2d::ui::Button* cameraRightButton;
+	cocos2d::ui::Button* skillButton;
 public:
 	static cocos2d::Layer* createLayer();
 
@@ -21,15 +20,11 @@ public:
 
 	void OnattackTouch(Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
-	void LeftTouch(Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
-
-	void RightTouch(Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
-
 	void attackButtonBegan();
 
-	void LeftTouchBegan();
+	void OnskillTouch(Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
-	void RightTouchBegan();
+	void skillButtonBegan();
 
 	CREATE_FUNC(ButtonLayer);
 };

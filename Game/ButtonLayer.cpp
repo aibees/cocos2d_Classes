@@ -1,8 +1,7 @@
 #include "ButtonLayer.h"
 
 #define ATTACK_BUTTON 1
-#define LEFT_BUTTON 2
-#define RIGHT_BUTTON 3
+#define SKILL_BUTTON 2
 
 USING_NS_CC;
 
@@ -19,8 +18,15 @@ void ButtonLayer::createButton() {
 	attackButton = ui::Button::create();
 	//attackButton->setTouchEnabled(true);
 	attackButton->loadTextures("button/button_attack.png", "button/button_attack_pressed.png", "");
-	attackButton->setPosition(Vec2(Visible.width - 80, 160));
+	attackButton->setPosition(Vec2(Visible.width - 180, 160));
 	this->addChild(attackButton, 1, ATTACK_BUTTON);
+
+	//------skill button------
+	skillButton = ui::Button::create();
+	//attackButton->setTouchEnabled(true);
+	skillButton->loadTextures("button/button_skill.png", "button/button_skill_pressed.png", "");
+	skillButton->setPosition(Vec2(Visible.width - 80, 240));
+	this->addChild(skillButton, 1, SKILL_BUTTON);
 
 	log("add button");
 	return;
@@ -46,36 +52,16 @@ void ButtonLayer::OnattackTouch(Ref* pSender, ui::Widget::TouchEventType type) {
 	}
 }
 
-void ButtonLayer::LeftTouchBegan() {
-	EventCustom clickEvent("LeftToCamera");
-	_eventDispatcher->dispatchEvent(&clickEvent);
+void ButtonLayer::skillButtonBegan() {
+	EventCustom skillTouchEvent("ItemEffect");
+	_eventDispatcher->dispatchEvent(&skillTouchEvent);
 }
 
-void ButtonLayer::LeftTouch(Ref* pSender, ui::Widget::TouchEventType type) {
+void ButtonLayer::OnskillTouch(Ref* pSender, ui::Widget::TouchEventType type) {
 	switch (type)
 	{
 	case cocos2d::ui::Widget::TouchEventType::BEGAN:
-		LeftTouchBegan();
-		break;
-	case cocos2d::ui::Widget::TouchEventType::MOVED:
-		break;
-	case cocos2d::ui::Widget::TouchEventType::ENDED:
-		break;
-	default:
-		break;
-	}
-}
-
-void ButtonLayer::RightTouchBegan() {
-	EventCustom clickEvent("RightToCamera");
-	_eventDispatcher->dispatchEvent(&clickEvent);
-}
-
-void ButtonLayer::RightTouch(Ref* pSender, ui::Widget::TouchEventType type) {
-	switch (type)
-	{
-	case cocos2d::ui::Widget::TouchEventType::BEGAN:
-		RightTouchBegan();
+		skillButtonBegan();
 		break;
 	case cocos2d::ui::Widget::TouchEventType::MOVED:
 		break;
@@ -96,8 +82,6 @@ bool ButtonLayer::init() {
 	buttonListener->setSwallowTouches(true);
 	createButton();
 	attackButton->addTouchEventListener(CC_CALLBACK_2(ButtonLayer::OnattackTouch, this));
-	cameraLeftButton->addTouchEventListener(CC_CALLBACK_2(ButtonLayer::LeftTouch, this));
-	cameraRightButton->addTouchEventListener(CC_CALLBACK_2(ButtonLayer::RightTouch, this));
-
+	skillButton->addTouchEventListener(CC_CALLBACK_2(ButtonLayer::OnskillTouch, this));
 	return true;
 }
