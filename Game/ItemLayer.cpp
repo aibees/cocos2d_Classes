@@ -64,12 +64,7 @@ void ItemLayer::update(float delta) {
 		
 		item->setPosition(Vec2(frame->getBoundingBox().getMidX(), frame->getBoundingBox().getMidY()));
 		this->addChild(item, 2);
-		/*
-			TODO1 : Alignment between item & frame
-			TODO2 : sprite remove process when player use item
-		*/
 	}
-	
 		
 	// schedule control
 	if(ItemSet::getInstance()->isQueueFull()) {
