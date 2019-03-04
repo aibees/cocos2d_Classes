@@ -37,6 +37,14 @@ void ItemSet::insertItem(string itemName) {
 	ItemQueue.push_back(ItemFactory::getInstance()->createItem(itemName));
 }
 
+Item* ItemSet::popItem() {
+	if (ItemQueue.size() < 1)
+		return nullptr;
+	Item* item = ItemQueue.front();
+	ItemQueue.erase(ItemQueue.begin(), ItemQueue.begin() + 1);
+	return item;
+}
+
 Item* ItemSet::getItem(int index) {
 	return ItemQueue[index];
 }

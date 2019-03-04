@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "Game/CollisionData.h"
 #include "Game/Item/ItemSet.h"
+#include "Game/ButtonLayer.h"
 #include <ctime>
 #include <vector>
 #include <string>
@@ -31,6 +32,8 @@ public :
 	virtual bool init();
 
 	void setItemFrame();
+	void updateFrame();
+	void itemCallback(cocos2d::EventCustom* event);
 
 	//schedul func
 	virtual void update(float delta);
