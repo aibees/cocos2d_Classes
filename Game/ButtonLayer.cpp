@@ -22,17 +22,6 @@ void ButtonLayer::createButton() {
 	attackButton->setPosition(Vec2(Visible.width - 80, 160));
 	this->addChild(attackButton, 1, ATTACK_BUTTON);
 
-	//------camera test button------
-	cameraLeftButton = ui::Button::create();
-	cameraLeftButton->loadTextures("button/left_arrow.png", "button/left_arrow.png", "");
-	cameraLeftButton->setPosition(Vec2(290, 160));
-	this->addChild(cameraLeftButton, 1, LEFT_BUTTON);
-	
-	cameraRightButton = ui::Button::create();
-	cameraRightButton->loadTextures("button/right_arrow.png", "button/right_arrow.png", "");
-	cameraRightButton->setPosition(Vec2(80, 160));
-	this->addChild(cameraRightButton, 1, RIGHT_BUTTON);
-
 	log("add button");
 	return;
 }
