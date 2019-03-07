@@ -30,5 +30,6 @@ std::string ICloaking::getItemName() {
 }
 
 void ICloaking::effect() {
-	log("ICloaking");
+	EventCustom opacity("setOpacity");
+	cocos2d::Node::_eventDispatcher->dispatchEvent(&opacity);
 }

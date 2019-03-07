@@ -31,7 +31,7 @@ bool PlayerLayer::init() {
 	this->addChild(spritePlayer, 0);
 		// flag init
 	isMoving = directionFlag = false;
-	
+	opacityTimer = 0;
 		//Event Dispatcher create -> Have role for connection between listener and Object.
 	EventDispatcher* player_dispatcher = Director::getInstance()->getEventDispatcher();
 	auto playerPosition = EventListenerTouchOneByOne::create();
@@ -44,7 +44,7 @@ bool PlayerLayer::init() {
 
 	//---------------------
 	//button touch dispatch test
-	EventListenerCustom* buttonListener = EventListenerCustom::create("ButtonTouchForSpeedUp",CC_CALLBACK_1(PlayerLayer::player_callback, this));
+	EventListenerCustom* buttonListener = EventListenerCustom::create("setOpacity",CC_CALLBACK_1(PlayerLayer::player_callback, this));
 	_eventDispatcher->addEventListenerWithFixedPriority(buttonListener, 1);
 	//---------------------
 	this->scheduleUpdate();
@@ -72,11 +72,8 @@ bool PlayerLayer::TouchMoved(Touch* touch, Event* event) {
 }
 
 void PlayerLayer::player_callback(EventCustom* event) {
-	log("speed up");
-	float tmp = player->getMoveSpeed();
-	if(tmp > 0.5)
-		player->SpeedUp();
-
+	log("opacity");
+	opacityTimer = 180;
 }
 
 void PlayerLayer::update(float delta) {
@@ -85,6 +82,13 @@ void PlayerLayer::update(float delta) {
 	auto win = Director::getInstance()->getWinSize();
 	auto bounding = getChildByTag(PLAYER)->getBoundingBox();
 	Vec2 move, d;
+	if (opacityTimer != 0) {
+		playerSprite->setOpacity(50);
+		opacityTimer--;
+		if (opacityTimer == 0)
+			playerSprite->setOpacity(255);
+	}
+
 	if (isMoving) {
 
 		//rotation set : update rotation whenever detected new move of sprite by flag

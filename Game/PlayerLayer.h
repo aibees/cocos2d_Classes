@@ -17,6 +17,7 @@ private:
 	cocos2d::Vec2 normalVector;
 	bool isMoving;
 	bool directionFlag;
+	int opacityTimer;
 public:
 	static cocos2d::Layer* createLayer();
 
