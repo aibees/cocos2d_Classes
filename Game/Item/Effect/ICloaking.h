@@ -3,7 +3,7 @@
 
 #include "../Item.h"
 
-class ICloaking : public Item, cocos2d::Node{
+class ICloaking : public Item{
 private:
 	cocos2d::CCSprite* itemSprite;
 	cocos2d::Vec2 Position;
