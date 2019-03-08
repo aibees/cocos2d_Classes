@@ -13,12 +13,10 @@
 #include "Game/CollisionData.h"
 #include "Game/Item/ItemSet.h"
 #include "Game/ButtonLayer.h"
+#include "Game/DataList.h"
 #include <ctime>
 #include <vector>
 #include <string>
-#include <iostream>
-#include <fstream>
-#include <sstream>
 
 class ItemLayer : public cocos2d::Layer {
 private :
@@ -26,6 +24,7 @@ private :
 		// container for storing item sprite that exist at game scene
 	std::vector<cocos2d::CCSprite*> ItemSprite;
 	bool ItemCreateFlag;
+	DataList* dataList;
 public :
 	static cocos2d::Layer* createLayer();
 

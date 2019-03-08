@@ -3,9 +3,8 @@
 #define __BACKGROUND_H__
 
 #include "cocos2d.h"
+#include "Game/DataList.h"
 #include <string>
-#include <fstream>
-#include <sstream>
 
 class Background
 {
@@ -15,6 +14,7 @@ private:
 	cocos2d::Vec2 BG_Size;
 	cocos2d::CCSprite* BackgroundImage;
 	static Background* Instance;
+	DataList* dataList;
 	Background(int num);
 
 public:
@@ -27,9 +27,6 @@ public:
 	void setPosition(cocos2d::Vec2 pos);
 
 	cocos2d::Vec2 getSize();
-	void setSize();
-
-	void getList(int num);
 	void setBG(int num);
 };
 #endif // !__BACKGROUND_H__

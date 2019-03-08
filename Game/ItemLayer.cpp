@@ -11,6 +11,7 @@ Layer* ItemLayer::createLayer() {
 bool ItemLayer::init() {
 	if (!Layer::init()) { return false; }
 	setItemFrame();
+	dataList = new DataList();
 	this->scheduleUpdate();
 	this->schedule(schedule_selector(ItemLayer::createItem), 4.0f);
 	ItemCreateFlag = false;
@@ -99,21 +100,9 @@ void ItemLayer::createItem(float delta) {
 	srand((unsigned int)time(0));
 	int item_num = 0;
 	// get filename of item at itemlist db
-	string tmp = "", dir = "Item/";
-	ifstream item_List("C:/Users/JUIL/project1/Classes/Game/Item/ItemList.txt");
-	if (item_List.fail())
-		log("itemList file read fail");
-	// check the number of item I can use
-	while (true) {
-		if (item_List.eof()) { break; }
-		getline(item_List, tmp);
-		item_num++;
-	}
-	int r_item = rand() % item_num + 1;
-	item_List.clear();
-	item_List.seekg(0L, ios::beg);
-	//read item list randomly in range
-	for (int i = 0; i < r_item; i++) { getline(item_List, tmp); }
+	int r_item = rand() % (dataList->getItemListSize());
+	string dir = "Item/", tmp = "";
+	tmp = dataList->getItemList(r_item);
 	setSprite(dir.append(tmp), tmp);
 }
 
