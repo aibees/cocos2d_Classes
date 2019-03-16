@@ -39,6 +39,11 @@ void Entity::setMP(long long int mp) {
 	return;
 }
 
+void Entity::setPlayerData(Rect player) {
+	playerBox = player;
+	return;
+}
+
 Vec2 Entity::getDefaultPosition() {
 	Size visible = Director::getInstance()->getVisibleSize();
 	return Vec2(visible.width / 2, visible.height / 2);
