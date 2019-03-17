@@ -4,11 +4,11 @@
 #pragma once
 
 #include "cocos2d.h"
-#include "Game/Unit/Player.h"
-#include "Game/backgroundLayer.h"
-#include "Game/BG/Background.h"
-#include "Game/ButtonLayer.h"
-#include "Game/CollisionData.h"
+#include "../Unit/Player.h"
+#include "../backgroundLayer.h"
+#include "../BG/Background.h"
+#include "ButtonLayer.h"
+#include "../CollisionData.h"
 
 class PlayerLayer : public cocos2d::Layer {
 private:

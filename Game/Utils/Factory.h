@@ -12,4 +12,4 @@ public :
 	virtual Item* createItem(std::string name);
 };
 
-#endif // !__ITEM_FACTORY_H__
+#endif // __FACTORY_H__

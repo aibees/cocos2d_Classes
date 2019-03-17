@@ -3,7 +3,7 @@
 #define __BACKGROUND_LAYER_H__
 
 #include "cocos2d.h"
-#include "BG/Background.h"
+#include "../BG/Background.h"
 
 class BackgroundLayer : public cocos2d::Layer {
 private:

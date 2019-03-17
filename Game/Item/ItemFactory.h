@@ -1,7 +1,7 @@
 #ifndef __ITEM_FACTORY_H__
 #define __ITEM_FACTORY_H__
 
-#include "../Factory.h"
+#include "../Utils/Factory.h"
 #include "cocos2d.h"
 #include "Item.h"
 

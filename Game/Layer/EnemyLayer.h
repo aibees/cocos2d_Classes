@@ -2,7 +2,7 @@
 #define __ENEMY_LAYER_H__
 
 #include "cocos2d.h"
-#include "./Unit/Enemy/Enemy.h"
+#include "../Unit/Enemy/Enemy.h"
 #include "CollisionData.h"
 #include <vector>
 
