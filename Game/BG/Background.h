@@ -3,7 +3,7 @@
 #define __BACKGROUND_H__
 
 #include "cocos2d.h"
-#include "Game/DataList.h"
+#include "../Utils/DataList.h"
 #include <string>
 
 class Background

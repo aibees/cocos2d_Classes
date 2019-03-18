@@ -10,11 +10,12 @@
 #define __ITEM_LAYER_H__
 
 #include "cocos2d.h"
-#include "../CollisionData.h"
+#include "../Utils/CollisionData.h"
 #include "../Item/ItemSet.h"
 #include "ButtonLayer.h"
-#include "../DataList.h"
+#include "../Utils/DataList.h"
 #include <ctime>
+#include <cstdlib>
 #include <vector>
 #include <string>
 

@@ -5,10 +5,10 @@
 
 #include "cocos2d.h"
 #include "../Unit/Player.h"
-#include "../backgroundLayer.h"
+#include "backgroundLayer.h"
 #include "../BG/Background.h"
 #include "ButtonLayer.h"
-#include "../CollisionData.h"
+#include "../Utils/CollisionData.h"
 
 class PlayerLayer : public cocos2d::Layer {
 private:
