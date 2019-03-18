@@ -26,3 +26,13 @@ string DataList::getItemList(int idx) {
 }
 
 int DataList::getItemListSize() { return itemList.size(); }
+
+std::string DataList::getEnemyList(int idx)
+{
+	return enemyList[idx];
+}
+
+int DataList::getEnemyListSize()
+{
+	return enemyList.size();
+}

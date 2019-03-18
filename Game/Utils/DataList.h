@@ -6,6 +6,7 @@ class DataList {
 private :
 	std::vector<std::string> backgroundList;
 	std::vector<std::string> itemList;
+	std::vector<std::string> enemyList;
 public :
 	DataList();
 	void dataInput();
@@ -13,4 +14,7 @@ public :
 
 	std::string getItemList(int idx);
 	int getItemListSize();
+
+	std::string getEnemyList(int idx);
+	int getEnemyListSize();
 };
