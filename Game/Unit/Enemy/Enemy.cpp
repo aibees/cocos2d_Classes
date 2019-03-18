@@ -30,3 +30,8 @@ long long int Enemy::getMP() { return MP; }
 void Enemy::setMP(long long int mp) {
 	MP = mp;
 }
+
+void Enemy::setPlayerData(Rect player) {
+	playerBox = player;
+	return;
+}

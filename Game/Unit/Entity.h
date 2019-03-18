@@ -15,7 +15,6 @@ public:
 	virtual void setHP(long long int hp);
 	virtual long long int getMP();
 	virtual void setMP(long long int mp);
-	virtual void setPlayerData(cocos2d::Rect player);
 
 private:
 	//coordinate of entity
@@ -23,7 +22,6 @@ private:
 	//Health and Magic point of entity
 	long long int HP;
 	long long int MP;
-	cocos2d::Rect playerBox;
 };
 
 #endif // !__ENTITY_H__
