@@ -98,7 +98,6 @@ void ItemLayer::update(float delta) {
 
 void ItemLayer::createItem(float delta) {
 	srand((unsigned int)time(0));
-	int item_num = 0;
 	// get filename of item at itemlist db
 	int r_item = rand() % (dataList->getItemListSize());
 	string dir = "Item/", tmp = "";
