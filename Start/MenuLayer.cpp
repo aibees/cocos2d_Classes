@@ -1,4 +1,3 @@
-#include "Game/GameScene.h"
 #include "MenuLayer.h"
 #include "SimpleAudioEngine.h"
 
