@@ -1,6 +1,6 @@
 #include "Factory.h"
 
-Item* Factory::createItem(std::string name)
+cocos2d::Node* Factory::createItem(std::string name)
 {
 	return new Item();
 }

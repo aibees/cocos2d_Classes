@@ -9,7 +9,7 @@ class Factory {
 private :
 
 public :
-	virtual Item* createItem(std::string name);
+	virtual cocos2d::Node* createItem(std::string name);
 };
 
 #endif // __FACTORY_H__
