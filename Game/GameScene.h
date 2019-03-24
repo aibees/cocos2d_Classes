@@ -8,6 +8,7 @@
 #include "Layer/ButtonLayer.h"
 #include "Layer/backgroundLayer.h"
 #include "Layer/ItemLayer.h"
+#include "Layer/EnemyLayer.h"
 
 class GameScene : public cocos2d::Scene {
 private:
