@@ -15,6 +15,9 @@ void DataList::dataInput() {
 		"IClear.png",
 		"ICloaking.png"
 	};
+	enemyList = {
+		"SmallGun.png"
+	};
 }
 
 string DataList::getBackground(int idx) {
@@ -27,12 +30,10 @@ string DataList::getItemList(int idx) {
 
 int DataList::getItemListSize() { return itemList.size(); }
 
-std::string DataList::getEnemyList(int idx)
-{
+std::string DataList::getEnemyList(int idx) {
 	return enemyList[idx];
 }
 
-int DataList::getEnemyListSize()
-{
+int DataList::getEnemyListSize() {
 	return enemyList.size();
 }
