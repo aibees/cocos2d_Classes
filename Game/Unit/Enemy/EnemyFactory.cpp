@@ -16,8 +16,8 @@ EnemyFactory * EnemyFactory::getInstance() {
 	return Instance;
 }
 
-Enemy* EnemyFactory::createEnemy(string filename) {
-	if (filename == "SmallGun.png") {
+Enemy* EnemyFactory::createEnemy(string filename, string name) {
+	if (name == "SmallGun.png") {
 		return new SmallGun(filename);
 	}
 }

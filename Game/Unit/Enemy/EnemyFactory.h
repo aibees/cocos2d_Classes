@@ -10,7 +10,7 @@ private:
 	EnemyFactory();
 public:
 	static EnemyFactory* getInstance();
-	virtual Enemy* createEnemy(std::string filename);
+	virtual Enemy* createEnemy(std::string filename, std::string name);
 };
 
 #endif // !__ENEMY_FACTORY_H__
