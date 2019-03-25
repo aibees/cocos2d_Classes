@@ -14,7 +14,7 @@
 class EnemyLayer :cocos2d::Layer {
 private :
 	std::vector<Enemy*> Enemies;
-	std::map<Enemy*, cocos2d::Sprite*> spriteMapping;
+	std::map<std::string, cocos2d::Sprite*> spriteMapping;
 	DataList* dataList;
 public :
 	static cocos2d::Layer* createLayer();
