@@ -5,13 +5,11 @@
 USING_NS_CC;
 using namespace std;
 
-SmallGun::SmallGun() {
-
-}
-
 SmallGun::SmallGun(string spName) {
 	srand((unsigned int)time(0));
-	sp = Sprite::create(spName);
+	speed = 110;
+	objName = "SmallGun";
+	objName.append(to_string(time(0)));
 	setHP(100);
 	setMP(100);
 	Size ws = Director::getInstance()->getVisibleSize();
@@ -36,9 +34,19 @@ void SmallGun::setHP(long long int hp) { HP = hp; }
 long long int SmallGun::getMP() { return MP; }
 void SmallGun::setMP(long long int mp) { MP = mp; }
 
+string SmallGun::getName() { return objName; }
+
+float SmallGun::getSpeed() { return speed; }
+
 void SmallGun::setPlayerData(Rect player) { playerBox = player; }
 
 float SmallGun::calcRotation() {
 	float tmp = atan2((Position.x - playerBox.getMidX()), (Position.y - playerBox.getMidY()));
-	return tmp * (-180 / PIE) - 90;
+	return tmp * (-180 / PIE);
+}
+
+Vec2 SmallGun::calcPosition() {
+	Vec2 normal = Vec2(playerBox.getMidX() - Position.x, playerBox.getMidY() - Position.y);
+	normal.normalize();
+	return Vec2(normal.x * speed, normal.y * speed);
 }

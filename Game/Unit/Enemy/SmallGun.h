@@ -11,6 +11,8 @@ private :
 	cocos2d::Rect playerBox;
 	long long int HP;
 	long long int MP;
+	float speed;
+	std::string objName;
 public :
 	SmallGun();
 	SmallGun(std::string spName);
@@ -20,8 +22,11 @@ public :
 	virtual void setHP(long long int hp);
 	virtual long long int getMP();
 	virtual void setMP(long long int mp);
+	virtual std::string getName();
+	virtual float getSpeed();
 	virtual void setPlayerData(cocos2d::Rect player);
 	virtual float calcRotation();
+	virtual cocos2d::Vec2 calcPosition();
 };
 
 #endif // !__SMALLGUN_H__
