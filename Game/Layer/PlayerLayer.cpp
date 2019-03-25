@@ -25,7 +25,7 @@ bool PlayerLayer::init() {
 	//---------------- Player create ------------------------------
 	player = new Player(Vec2(Visible.width / 2, Visible.height / 2), 100, 100, 100);
 	
-	CCSprite* spritePlayer = player->getSprite();
+	Sprite* spritePlayer = player->getSprite();
 	spritePlayer->setPosition(player->getPosition());
 	spritePlayer->setTag(PLAYER);
 	this->addChild(spritePlayer, 0);
@@ -78,7 +78,7 @@ void PlayerLayer::player_callback(EventCustom* event) {
 
 void PlayerLayer::update(float delta) {
 	// playerSprite load with tag value
-	auto playerSprite = static_cast<CCSprite*>(getChildByTag(PLAYER));
+	auto playerSprite = static_cast<Sprite*>(getChildByTag(PLAYER));
 	auto win = Director::getInstance()->getWinSize();
 	auto bounding = getChildByTag(PLAYER)->getBoundingBox();
 	Vec2 move, d;

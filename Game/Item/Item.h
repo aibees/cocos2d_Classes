@@ -5,7 +5,7 @@
 
 class Item : public cocos2d::Node {
 protected :
-	cocos2d::CCSprite* itemSprite;
+	cocos2d::Sprite* itemSprite;
 	cocos2d::Vec2 Position;
 	std::string name;
 public :

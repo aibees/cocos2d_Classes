@@ -12,7 +12,7 @@ private:
 	std::string List[3];
 	cocos2d::Vec2 Position;
 	cocos2d::Vec2 BG_Size;
-	cocos2d::CCSprite* BackgroundImage;
+	cocos2d::Sprite* BackgroundImage;
 	static Background* Instance;
 	DataList* dataList;
 	Background(int num);
@@ -20,7 +20,7 @@ private:
 public:
 	static Background* getInstance();
 
-	cocos2d::CCSprite* getBG_Sprite();
+	cocos2d::Sprite* getBG_Sprite();
 	void setBG_Sprite();
 
 	cocos2d::Vec2 getPosition();

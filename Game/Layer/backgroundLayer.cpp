@@ -23,7 +23,7 @@ bool BackgroundLayer::init() {
 void BackgroundLayer::BG_Setting() {
 	auto visible = Director::getInstance()->getVisibleSize();
 	
-	CCSprite* BGsprite = Background::getInstance()->getBG_Sprite();
+	Sprite* BGsprite = Background::getInstance()->getBG_Sprite();
 	BGsprite->setPosition(Vec2(visible.width / 2, visible.height / 2));
 	BGsprite->setTag(BACKGROUND);
 	this->addChild(BGsprite, 0);

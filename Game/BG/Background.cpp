@@ -17,12 +17,12 @@ Background::Background(int num) {
 	setBG(num);
 }
 
-CCSprite* Background::getBG_Sprite() { return BackgroundImage; }
+Sprite* Background::getBG_Sprite() { return BackgroundImage; }
 
 void Background::setBG_Sprite() { 
 	string tmp = "BG/";
 	tmp.append(dataList->getBackground(0));
-	BackgroundImage = CCSprite::create(tmp);
+	BackgroundImage = Sprite::create(tmp);
 	return;
 }
 

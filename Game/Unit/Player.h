@@ -7,7 +7,7 @@
 
 class Player : public Entity {
 private:
-	cocos2d::CCSprite* spritePlayer;
+	cocos2d::Sprite* spritePlayer;
 	cocos2d::Vec2 Position;
 	long long int HP;
 	long long int MP;
@@ -18,7 +18,7 @@ public:
 	Player(cocos2d::Vec2 position, long long int hp, long long int mp, float moveSpeed);
 	
 	void setSprite();
-	cocos2d::CCSprite* getSprite();
+	cocos2d::Sprite* getSprite();
 	
 	void setPosition(cocos2d::Vec2);
 	cocos2d::Vec2 getPosition();

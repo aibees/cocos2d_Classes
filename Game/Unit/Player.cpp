@@ -15,10 +15,10 @@ Player::Player(Vec2 position, long long int hp, long long int mp, float moveSpee
 void Player::setSprite() {
 	log("create player sprite");
 	std::string tmp = "unit/Player/Basic.png";
-	spritePlayer = CCSprite::create(tmp);
+	spritePlayer = Sprite::create(tmp);
 }
 
-CCSprite* Player::getSprite() {return spritePlayer;}
+Sprite* Player::getSprite() {return spritePlayer;}
 
 void Player::setPosition(Vec2 position) {Player::Position = position;}
 cocos2d::Vec2 Player::getPosition() {return Player::Position;}

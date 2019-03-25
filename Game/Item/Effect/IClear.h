@@ -5,7 +5,7 @@
 
 class IClear : public Item {
 private :
-	cocos2d::CCSprite* itemSprite;
+	cocos2d::Sprite* itemSprite;
 	cocos2d::Vec2 Position;
 	std::string name;
 public :

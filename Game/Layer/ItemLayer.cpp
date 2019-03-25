@@ -56,9 +56,9 @@ void ItemLayer::updateFrame() {
 	for (int i = 0; i < num; i++) {
 		if (ItemSet::getInstance()->getItem(i) == nullptr)
 			break;
-		CCSprite* frame = static_cast<CCSprite*>(getChildByTag(100 + i));
+		Sprite* frame = static_cast<Sprite*>(getChildByTag(100 + i));
 		string SpriteName = "Item/" + ItemSet::getInstance()->getItem(i)->getItemName() + ".png";
-		CCSprite* item = CCSprite::create(SpriteName);
+		Sprite* item = Sprite::create(SpriteName);
 		item->setAnchorPoint(Vec2(0.5, 0.5));
 		item->setTag(200 + i);
 		item->setPosition(Vec2(frame->getBoundingBox().getMidX(), frame->getBoundingBox().getMidY()));

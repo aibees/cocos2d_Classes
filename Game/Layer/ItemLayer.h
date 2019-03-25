@@ -23,7 +23,7 @@ class ItemLayer : public cocos2d::Layer {
 private :
 	cocos2d::Rect playerBox;
 		// container for storing item sprite that exist at game scene
-	std::vector<cocos2d::CCSprite*> ItemSprite;
+	std::vector<cocos2d::Sprite*> ItemSprite;
 	bool ItemCreateFlag;
 	DataList* dataList;
 public :
