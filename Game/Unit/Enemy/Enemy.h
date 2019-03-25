@@ -15,8 +15,10 @@ public :
 	virtual void setHP(long long int hp) = 0;
 	virtual long long int getMP() = 0;
 	virtual void setMP(long long int mp) = 0;
+	virtual std::string getName() = 0;
+	virtual float getSpeed() = 0;
 	virtual void setPlayerData(cocos2d::Rect player) = 0;
 	virtual float calcRotation() = 0;
+	virtual cocos2d::Vec2 calcPosition() = 0;
 };
-
 #endif // !__ENEMY_H__
