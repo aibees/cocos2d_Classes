@@ -6,7 +6,6 @@
 
 class SmallGun : public Enemy {
 private :
-	cocos2d::Sprite* sp;
 	cocos2d::Vec2 Position;
 	cocos2d::Rect playerBox;
 	long long int HP;
@@ -27,6 +26,7 @@ public :
 	virtual void setPlayerData(cocos2d::Rect player);
 	virtual float calcRotation();
 	virtual cocos2d::Vec2 calcPosition();
+	virtual bool isCollision(cocos2d::Rect spBound);
 };
 
 #endif // !__SMALLGUN_H__

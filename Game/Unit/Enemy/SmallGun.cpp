@@ -7,7 +7,7 @@ using namespace std;
 
 SmallGun::SmallGun(string spName) {
 	srand((unsigned int)time(0));
-	speed = 110;
+	speed = 90;
 	objName = "SmallGun";
 	objName.append(to_string(time(0)));
 	setHP(100);
@@ -49,4 +49,12 @@ Vec2 SmallGun::calcPosition() {
 	Vec2 normal = Vec2(playerBox.getMidX() - Position.x, playerBox.getMidY() - Position.y);
 	normal.normalize();
 	return Vec2(normal.x * speed, normal.y * speed);
+}
+
+bool SmallGun::isCollision(Rect spBound) {
+	if (spBound.intersectsCircle(Vec2(playerBox.getMidX(), playerBox.getMidY()), (playerBox.getMidY() - playerBox.getMinY()))) {
+		//collision detected
+		return true;
+	}
+	return false;
 }
