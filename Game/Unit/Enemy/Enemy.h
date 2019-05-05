@@ -20,5 +20,6 @@ public :
 	virtual void setPlayerData(cocos2d::Rect player) = 0;
 	virtual float calcRotation() = 0;
 	virtual cocos2d::Vec2 calcPosition() = 0;
+	virtual bool isCollision(cocos2d::Rect bound) = 0;
 };
 #endif // !__ENEMY_H__

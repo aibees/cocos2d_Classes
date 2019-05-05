@@ -25,13 +25,15 @@ void EnemyLayer::update(float delta) {
 	for (int i = 0; i < Enemies.size(); i++) {
 		Enemies[i]->setPlayerData(playerBox);
 		Sprite* sp = spriteMapping[Enemies[i]->getName()];
-		log("map size : %d", spriteMapping.size());
 		sp->setRotation(Enemies[i]->calcRotation());
 		Vec2 d = Enemies[i]->calcPosition();
 		d = Vec2(Enemies[i]->getPosition().x + d.x * delta, Enemies[i]->getPosition().y + d.y * delta);
 		Enemies[i]->setPosition(d);
 		sp->setPosition(Enemies[i]->getPosition());
-		log("%d th enemy : %f | %f", i, sp->getPosition().x, sp->getPosition().y);
+		if (Enemies[i]->isCollision(sp->getBoundingBox())) {
+			log("collision");
+			popExitScene();
+		}
 	}
 }
 
@@ -47,4 +49,9 @@ void EnemyLayer::createEnemy(float delta) {
 	this->addChild(sp, 0);
 	spriteMapping[Enemies.back()->getName()] = sp;
 	log("enemy created!!");
+}
+
+void EnemyLayer::popExitScene() {
+	auto gameover = static_cast<GameScene*>(this->getParent());
+	gameover->CloseGameScene();
 }

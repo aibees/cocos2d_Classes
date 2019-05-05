@@ -2,10 +2,12 @@
 #define __ENEMY_LAYER_H__
 
 #include "cocos2d.h"
+#include "Game/GameScene.h"
 #include "../Unit/Enemy/Enemy.h"
 #include "../Unit/Enemy/EnemyFactory.h"
 #include "../Utils/CollisionData.h"
 #include "../Utils/DataList.h"
+#include "ExitLayer.h"
 #include <vector>
 #include <map>
 #include <cstdlib>
@@ -20,6 +22,8 @@ public :
 	static cocos2d::Layer* createLayer();
 
 	virtual bool init();
+
+	void popExitScene();
 	
 	//Update
 	virtual void update(float delta);
