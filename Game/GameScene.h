@@ -9,6 +9,7 @@
 #include "Layer/backgroundLayer.h"
 #include "Layer/ItemLayer.h"
 #include "Layer/EnemyLayer.h"
+#include "Layer/ExitLayer.h"
 
 class GameScene : public cocos2d::Scene {
 private:
@@ -16,6 +17,8 @@ public:
 	static cocos2d::Scene* createScene();
 
 	virtual bool init();
+
+	void CloseGameScene();
 
 	CREATE_FUNC(GameScene);
 };

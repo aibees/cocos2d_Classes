@@ -30,3 +30,10 @@ bool GameScene::init() {
 		return false;
 	return true;
 }
+
+void GameScene::CloseGameScene() {
+	// Release memory of Layers
+	// Call ExitScene Layer
+	Scene* exitScene = ExitLayer::scene();
+	Director::getInstance()->replaceScene(exitScene);
+}
