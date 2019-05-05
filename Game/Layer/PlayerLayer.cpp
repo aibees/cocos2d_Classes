@@ -44,8 +44,8 @@ bool PlayerLayer::init() {
 
 	//---------------------
 	//button touch dispatch test
-	EventListenerCustom* buttonListener = EventListenerCustom::create("setOpacity",CC_CALLBACK_1(PlayerLayer::player_callback, this));
-	_eventDispatcher->addEventListenerWithFixedPriority(buttonListener, 1);
+	skillButtonListener = EventListenerCustom::create("setOpacity",CC_CALLBACK_1(PlayerLayer::player_callback, this));
+	_eventDispatcher->addEventListenerWithFixedPriority(skillButtonListener, 1);
 	//---------------------
 	this->scheduleUpdate();
 
@@ -123,4 +123,10 @@ void PlayerLayer::update(float delta) {
 			isMoving = false;
 		}
 	}
+}
+
+PlayerLayer::~PlayerLayer() {
+	log("playerLayer destructor");
+	_eventDispatcher->removeEventListener(skillButtonListener);
+	this->autorelease();
 }

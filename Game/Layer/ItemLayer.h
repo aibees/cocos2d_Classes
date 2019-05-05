@@ -26,7 +26,9 @@ private :
 	std::vector<cocos2d::Sprite*> ItemSprite;
 	bool ItemCreateFlag;
 	DataList* dataList;
+	cocos2d::EventListenerCustom* buttonListener;
 public :
+	~ItemLayer();
 	static cocos2d::Layer* createLayer();
 
 	virtual bool init();

@@ -10,6 +10,8 @@ Layer* ItemLayer::createLayer() {
 
 bool ItemLayer::init() {
 	if (!Layer::init()) { return false; }
+	this->removeAllChildrenWithCleanup(true);
+	ItemSet::getInstance()->clearQueue();
 	setItemFrame();
 	dataList = new DataList();
 	this->scheduleUpdate();
@@ -17,17 +19,19 @@ bool ItemLayer::init() {
 	ItemCreateFlag = false;
 
 	// button event listener
-	EventListenerCustom* buttonListener = EventListenerCustom::create("ItemEffect", CC_CALLBACK_1(ItemLayer::itemCallback, this));
+	buttonListener = EventListenerCustom::create("ItemEffect", CC_CALLBACK_1(ItemLayer::itemCallback, this));
 	_eventDispatcher->addEventListenerWithFixedPriority(buttonListener, 1);
 	return true;
 }
 
 void ItemLayer::itemCallback(EventCustom* event) {
 	auto item = ItemSet::getInstance()->popItem();
-	updateFrame();
 	if (item == nullptr) {
 		log("queue is empty");
 		return;
+	}
+	else {
+		updateFrame();
 	}
 	item->effect();
 }
@@ -50,6 +54,7 @@ void ItemLayer::setItemFrame() { //Frame sprite is tagged in 100's numbering
 
 void ItemLayer::updateFrame() {
 	int num = ItemSet::getInstance()->getQueueSize();
+	log("itemlayer updateframe num : %d", num);
 	for (int i = 0; i < num + 1; i++) {
 		this->removeChildByTag(200 + i);
 	}
@@ -107,10 +112,16 @@ void ItemLayer::createItem(float delta) {
 
 void ItemLayer::setSprite(string filename, string name) {
 	srand(time(NULL));
-	CCSprite* itemSprite = CCSprite::create(filename);
+	Sprite* itemSprite = Sprite::create(filename);
 	Vec2 position = Vec2(rand()*rand() % 1480, rand()*rand() % 720);
 	itemSprite->setPosition(position);
 	itemSprite->setName(name);
 	this->addChild(itemSprite);
 	ItemSprite.push_back(itemSprite);
+}
+
+ItemLayer::~ItemLayer() {
+	log("ItemLayer destructor");
+	_eventDispatcher->removeEventListener(buttonListener);
+	this->autorelease();
 }

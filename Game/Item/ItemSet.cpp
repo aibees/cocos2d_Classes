@@ -13,6 +13,7 @@ ItemSet* ItemSet::getInstance() {
 }
 
 ItemSet::ItemSet() {
+	ItemQueue.clear();
 	ItemQueue.reserve(5);
 }
 
@@ -35,6 +36,10 @@ void ItemSet::insertItem(string itemName) {
 	// how change string to item object...?
 	
 	ItemQueue.push_back(ItemFactory::getInstance()->createItem(itemName));
+}
+
+void ItemSet::clearQueue() {
+	ItemQueue.clear();
 }
 
 Item* ItemSet::popItem() {

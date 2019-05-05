@@ -18,7 +18,10 @@ private:
 	bool isMoving;
 	bool directionFlag;
 	int opacityTimer;
+	cocos2d::EventListenerCustom* skillButtonListener;
 public:
+	~PlayerLayer();
+
 	static cocos2d::Layer* createLayer();
 
 	virtual bool init();

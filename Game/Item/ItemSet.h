@@ -26,6 +26,7 @@ public :
 	int getQueueCapacity();
 	bool isQueueFull();
 	void insertItem(std::string itemName);
+	void clearQueue();
 	Item* popItem();
 	Item* getItem(int index);
 };
