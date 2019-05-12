@@ -30,5 +30,6 @@ std::string IClear::getItemName() {
 }
 
 void IClear::effect() {
-	log("IClear");
+	EventCustom clear("setClear");
+	_eventDispatcher->dispatchEvent(&clear);
 }

@@ -13,6 +13,10 @@ bool EnemyLayer::init() {
 		return false;
 	log("Enemylayer init");
 	dataList = new DataList();
+
+	clearSkillButtonListener = EventListenerCustom::create("setClear", CC_CALLBACK_1(EnemyLayer::clearSkill_callback, this));
+	_eventDispatcher->addEventListenerWithFixedPriority(clearSkillButtonListener, 1);
+
 	this->schedule(schedule_selector(EnemyLayer::createEnemy), 5.0f);
 	this->scheduleUpdate();
 	return true;
@@ -35,6 +39,12 @@ void EnemyLayer::update(float delta) {
 			popExitScene();
 		}
 	}
+}
+
+void EnemyLayer::clearSkill_callback(EventCustom *event) {
+	log("all of enemy clear");
+	this->removeAllChildrenWithCleanup(true);
+	Enemies.clear();
 }
 
 void EnemyLayer::createEnemy(float delta) {

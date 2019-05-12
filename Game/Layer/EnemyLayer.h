@@ -17,6 +17,7 @@ class EnemyLayer :cocos2d::Layer {
 private :
 	std::vector<Enemy*> Enemies;
 	std::map<std::string, cocos2d::Sprite*> spriteMapping;
+	cocos2d::EventListenerCustom* clearSkillButtonListener;
 	DataList* dataList;
 public :
 	static cocos2d::Layer* createLayer();
@@ -28,6 +29,8 @@ public :
 	//Update
 	virtual void update(float delta);
 	void createEnemy(float delta);
+
+	void clearSkill_callback(cocos2d::EventCustom *event);
 
 	CREATE_FUNC(EnemyLayer);
 };
