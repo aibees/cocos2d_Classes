@@ -122,6 +122,6 @@ void ItemLayer::setSprite(string filename, string name) {
 
 ItemLayer::~ItemLayer() {
 	log("ItemLayer destructor");
+	std::vector<cocos2d::Sprite*>().swap(ItemSprite);
 	_eventDispatcher->removeEventListener(buttonListener);
-	this->autorelease();
 }

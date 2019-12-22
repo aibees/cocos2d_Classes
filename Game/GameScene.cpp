@@ -33,7 +33,10 @@ bool GameScene::init() {
 
 void GameScene::CloseGameScene() {
 	// Release memory of Layers
+	log("start to erase all layer");
+	this->removeAllChildren();
 	// Call ExitScene Layer
 	Scene* exitScene = ExitLayer::scene();
-	Director::getInstance()->replaceScene(exitScene);
+	//Director::getInstance()->replaceScene(exitScene);
+	Director::getInstance()->popScene();
 }

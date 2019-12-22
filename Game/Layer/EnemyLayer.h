@@ -21,6 +21,7 @@ private :
 	DataList* dataList;
 public :
 	static cocos2d::Layer* createLayer();
+	~EnemyLayer();
 
 	virtual bool init();
 

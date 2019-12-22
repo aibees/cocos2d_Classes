@@ -66,6 +66,7 @@ void MenuLayer::onMouseDown(Event* event) {
 
 void MenuLayer::ReplaceToStart(Ref* sender) {
 	Scene *GameScene = GameScene::createScene();
-	Director::getInstance()->replaceScene(GameScene);
+	//Director::getInstance()->replaceScene(GameScene);
+	Director::getInstance()->pushScene(GameScene);
 	return;
 }

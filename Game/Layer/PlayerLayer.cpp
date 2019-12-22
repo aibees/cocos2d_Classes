@@ -128,5 +128,4 @@ void PlayerLayer::update(float delta) {
 PlayerLayer::~PlayerLayer() {
 	log("playerLayer destructor");
 	_eventDispatcher->removeEventListener(skillButtonListener);
-	this->autorelease();
 }
