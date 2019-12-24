@@ -23,7 +23,7 @@ bool PlayerLayer::init() {
 	auto Visible = Director::getInstance()->getVisibleSize();
 	
 	//---------------- Player create ------------------------------
-	player = new Player(Vec2(Visible.width / 2, Visible.height / 2), 100, 100, 100);
+	player = new Player(Vec2(Visible.width / 2, Visible.height / 2), 100, 100, 110);
 	
 	Sprite* spritePlayer = player->getSprite();
 	spritePlayer->setPosition(player->getPosition());

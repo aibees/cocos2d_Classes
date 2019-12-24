@@ -37,6 +37,5 @@ void GameScene::CloseGameScene() {
 	this->removeAllChildren();
 	// Call ExitScene Layer
 	Scene* exitScene = ExitLayer::scene();
-	//Director::getInstance()->replaceScene(exitScene);
-	Director::getInstance()->popScene();
+	Director::getInstance()->pushScene(exitScene);
 }

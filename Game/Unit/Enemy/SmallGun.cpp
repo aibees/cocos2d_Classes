@@ -7,7 +7,7 @@ using namespace std;
 
 SmallGun::SmallGun(string spName) {
 	srand((unsigned int)time(0));
-	speed = 90;
+	speed = 85;
 	objName = "SmallGun";
 	objName.append(to_string(time(0)));
 	setHP(100);
@@ -16,8 +16,8 @@ SmallGun::SmallGun(string spName) {
 	float spSizeX = 80;
 	float spSizeY = 80;
 	int flag = rand() % 2;
-	float x = (rand()*rand()) % ((int)ws.width);
-	float y = (rand()*rand()) % ((int)ws.height);
+	float x = rand() % ((int)ws.width);
+	float y = rand() % ((int)ws.height);
 	if(flag)
 		x = (x < ws.width) ? (-1)*spSizeX : ws.width;
 	else
